@@ -8,3 +8,6 @@
 
 
 Fabricate.times(10, :user)
+10.times do
+  Item.create(name: Faker::Coffee.blend_name)
+end

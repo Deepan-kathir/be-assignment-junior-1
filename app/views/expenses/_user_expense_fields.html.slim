@@ -1,0 +1,25 @@
+
+table
+  tr
+    th
+      .user_expense_field
+        table
+          tr
+            th
+              .form-label
+                = f.label "User"
+                = f.select :user_id, options_from_collection_for_select(User.all, :id, :name, get_user_id_field_value(local_assigns)), {}, {class: "user_select"}
+                = f.check_box :add_as_friend, class: "form-check-input", checked: true
+
+            th
+              .form-check.unequal_amount.disable
+                = f.label "Owe"
+                = f.text_field :owed_amount, class: "mb-3 form-control owed_amount"
+
+            th
+              .form-check.unequal_amount.disable
+                = f.label "Pay"
+                = f.text_field :paid_amount, class: "mb-3 form-control paid_amount"
+
+            th
+              = link_to "❌", "javascript:void(0)", class: "ml-1 remove-element"

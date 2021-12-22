@@ -1,0 +1,10 @@
+aside.side-bar-area
+  .friends-list
+    = link_to "Dashboard", root_path, class: "friend-name"
+
+aside.side-bar-area
+  .friends-list
+    = link_to "My Expense", people_path(current_user.id), class: "friend-name"
+    p.friends-list-header FRIENDS
+    - friends.each do |friend|
+      = link_to get_user_name(friend), people_path(friend.id), class: "friend-name"

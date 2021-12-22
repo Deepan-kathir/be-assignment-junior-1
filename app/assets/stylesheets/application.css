@@ -15,3 +15,7 @@
  *= require 'jgrowl'
  *= require_self
  */
+
+.disable {
+    display: none;
+}

@@ -15,6 +15,7 @@ gem 'pg'
 gem 'devise'
 gem 'slim-rails'
 gem 'simple_form'
+gem "nested_form"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

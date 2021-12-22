@@ -1,0 +1,53 @@
+= form_with model: expense, local: false do |form|
+
+  #error-div
+
+  table
+    tr
+      th
+        .form-label
+          = form.label :date
+          = form.date_field :date, class: "mb-3 form-control", value: Time.now.strftime('%Y-%m-%d')
+
+      th
+        .form-label
+          = form.label :payer
+          = form.select :payer_id, options_from_collection_for_select(User.all, :id, :name, current_user.id), {prompt: "Select a User"}, {class: "form-select form-select-sm mb-3"}
+
+
+  .form-label
+    = form.label :description
+    = form.text_area :description, class: "mb-3 form-control"
+
+
+  .form-label
+    = form.label "Choose Items: "
+    = form.collection_select :item_ids, Item.all, :id, :name, {include_blank: true, class: "form-select form-select-sm mb-3 selectpicker"}, {multiple: true}
+
+  table
+    tr
+      th
+        .form-label
+          = form.label "Total amount spent"
+          = form.text_field :initial_amount, class: "mb-3 form-control", id: 'initial_amount'
+      th
+        .form-label
+          = form.label "Tax"
+          = form.text_field :tax, class: "mb-3 form-control", id: 'tax'
+
+
+  .form-label
+    = form.label "Grand Total"
+    = form.text_field :amount, class: "mb-3 form-control", id: 'actual_amount'
+
+  .form-check
+    = form.check_box :split, class: "form-check-input", checked: true
+    .mb-3.form-check-label
+      = form.label "Check if amount need to be split(Payer must be present)"
+
+  table
+    tr
+      th
+        = link_to_add_fields 'Add User', form, :user_expenses, {partial: "expenses/user_expense_fields"}
+
+  = form.submit "Add expense", id: "add_expense", class: "disable"

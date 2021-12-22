@@ -17,3 +17,13 @@ require("jgrowl")
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("custom/expense/update_payer_value")
+require("custom/expense/add_user_element")
+require("custom/expense/remove_user_element")
+require("custom/expense/unequal_amount_element")
+require("custom/expense/form_submission")
+require("custom/expense/show_hide_element")
+require("custom/expense/tax_calculation")
+//= require jquery_nested_form
+
